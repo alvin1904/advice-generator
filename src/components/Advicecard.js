@@ -7,16 +7,23 @@ function Advicecard(){
     const [loading, setLoading]=useState(true)
     const [advice, setAdvice]=useState({})
     useEffect(()=>{
-        if(loading)
-          fetch('https://api.adviceslip.com/advice')
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+          fetch('https://api.adviceslip.com/advice',{ signal: signal})
               .then((response) => response.json())
               .then((data) => setAdvice(data.slip))
               .then(console.log("data fetched"))
-        setLoading(false)    
+              .catch((e)=>console.log(e))
+
+              return () => {
+                // cancel the request before component unmounts
+                controller.abort();
+              }   
     },[loading])
 
     const handleRefresh = ()=>{
-        setLoading(true)
+        setLoading(!loading)
     }
 
     return <>
