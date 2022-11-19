@@ -9,8 +9,8 @@
     --font-fw-el: 200;
     --font-fw-l: 300;
     --font-fw-r: 400; 
-    --font-fs-advice: 3.5rem;
-    --font-fs-heading: 1 rem;
+    --font-fs-advice: 3.5em;
+    --font-fs-heading: 1em;
 }
 
 body{
@@ -20,18 +20,109 @@ body{
 .App{
     display: flex;
     justify-content: center;
-    transform: translateY(50%);
 }
+
 .advicecard{
+    transform: translateY(50%);
+    transition: all 0.5s ease-out;
     background-color: var(--clr-bg-accent);
     color: var(--clr-primary);
-    height: 400px;
-    width: 35%;
+    height: 350px;
+    max-height: 500px;
+    width: 40rem;
+    max-width: 90%;
     font-weight: var(--font-fw-r);
     border-radius: 1.25rem;
+    box-shadow: rgba(5, 5, 5, 0.2) 0px 7px 29px 0px;
+    overflow:visible;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem; 
+    padding-bottom: 0.5rem;
+}
+.adviceno{
+    text-transform:uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.35rem;
+}
+.advice{
+    color: var(--clr-bg-accent2);
+    font-size: calc(1.5vh + 2vmin);
+    max-width: 80%;
+    margin-top: 2rem;
+    line-height: 2.25rem;
 
 }
+.divider{
+    /* position:static; */
+    margin-top: 3rem;
+    margin-bottom:2rem;
+}
+.dice{
+    background-color: var(--clr-primary);
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+    position: absolute;
+    transform: translateY(34.6rem);
+    box-shadow: rgba(5, 5, 5, 0.2) 0px 7px 29px 0px;
+    transition: 0.5s ease;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.diceimg{
+    height: 2.5rem;
+}
+.dice:hover{
+    -webkit-box-shadow:0px 0px 25px 0px var(--clr-primary);
+-moz-box-shadow: 0px 0px 25px 0px var(--clr-primary);
+box-shadow: 0px 0px 25px 0px var(--clr-primary);
+    cursor:pointer;
+}
+.diceimg:hover{
+    animation: rotate 2.5s cubic-bezier(0,.71,.8,.41) infinite; 
+    fill: #fff;
+}
+@keyframes rotate{
+    to{ transform: rotate(360deg); }
+}
+
+.dividermobile{
+    display:none;
+    transition: 0.5s ease;
+}
+
+@media(max-width: 600px){
+    .dividerpc{
+        display:none;
+    }
+    .dividermobile{
+        display:flex;
+        margin-bottom: 0.5rem;
+    }
+    .advicecard{
+        padding-bottom:3rem;
+    }
+    .dice{
+        transform: translateY(38.4rem);
+    }
+    .divider{
+        margin-top: 3rem;
+    }
+    .advice{
+        margin-top: 2.5rem;
+        line-height: 2rem;
+    }
+    .adviceno{
+        margin-top:3rem;
+    }
+} 
 
 
 
